@@ -8,6 +8,7 @@
 
 #include "common.h"
 #include "cfg.h"
+#include "zbxgetopt.h"
 
 const char	*progname = NULL;
 const char	title_message[] = "Cat socket server";
@@ -55,10 +56,11 @@ static char	shortopts[] = "c:n:hVR:";
 int	main(int argc, char **argv)
 {
 	CSS_TASK_EX	t = {CSS_TASK_START};
+	char		ch = '\0';
 
 	progname = get_program_name(argv[0]);
 
-	/* parse the command-line EDIT */
+	/* parse the command-line */
 	while ((char)EOF != (ch = (char)zbx_getopt_long(argc, argv, shortopts, longopts, NULL)))
 	{
 		switch (ch)
